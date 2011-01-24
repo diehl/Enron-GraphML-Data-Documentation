@@ -1,0 +1,112 @@
+GraphML Representation of the Enron Email Dataset - Version 0.1
+
+Overview
+========
+
+This dataset contains a representation of the Enron email dataset derived from 
+the MySQL representations previously released by USC/ISI [1] and UC Berkeley [2].
+In addition, it contains ground truth about a set of manager-subordinate 
+relationships within the company that existed between January 2000 and November
+2001 [3]. This ground truth data was the basis for the experiments on social
+relationship identification conducted in [4]. 
+
+Data Description
+================
+
+Email Message Data
+
+The email message data is derived from the messages, addresses and recipients tables
+in the UC Berkeley MySQL database. The UC Berkeley data was selected over the USC/ISI
+data due to its completeness. Both datasets have been conditioned in some unknown
+manner by these institutions. After inspecting both, it became clear that the UC 
+Berkeley dataset contains more dimensions of the original data.
+
+The GraphML representation of the messages captures much of the information associated with
+a given message using Email Address and Message nodes. The attributes of each node type
+are described below.
+
+Email Address Node
+------------------
+address         - [String] The email address represented by the node.
+fullyObserved   - [Boolean] According to the USC/ISI data, the Enron email dataset represents 
+                  the union of the inboxes of 151 employees. The addresses of those employees 
+                  are listed in the employeelist table in the USC/ISI MySQL database. 
+type            - [String] "Email Address"
+
+Message Node
+------------
+datetime        - [String] The datetime associated with the message in UTC. 
+epochSecs       - [Integer] The datetime represented as seconds from the epoch.
+subject         - [String] The subject of the message.
+body            - [String] The body of the message.
+emailID         - [String] The email message ID from the message header. 
+type            - [String] "Message"
+
+Senders and recipients of the message are captured by SENT and RECEIVED_BY relationships.
+The attributes of each relationship type are described below.
+
+SENT Relationship
+-----------------
+datetime        - [String] The datetime associated with the message in UTC. 
+epochSecs       - [Integer] The datetime represented as seconds from the epoch.
+
+RECEIVED_BY Relationship
+------------------------
+datetime        - [String] The datetime associated with the message in UTC. 
+epochSecs       - [Integer] The datetime represented as seconds from the epoch.
+type            - [String] "to" / "cc" / "bcc"
+order           - [Integer] The position of the recipient address in the list of addresses
+                  with the specified type. 
+                  
+The datetime and epochSecs fields in the SENT and RECEIVED_BY relationships are identical 
+to those of the Message nodes that they are connected to. 
+
+The employees for which manager-subordinate relationship ground truth is available are 
+represented by Person nodes. The attributes of a Person node are described below.
+
+Person Node
+-----------
+lastName        - [String] The individual's last name.
+firstName       - [String] The individual's first name.
+provenance      - [String] The source containing evidence of the individual's existence. 
+type            - [String] "Person"
+
+Manager-subordinate social relationships between individuals are represented by 
+DIRECTLY_REPORTED_TO relationships in GraphML. An individual's use of an email address is
+captured by USED_EMAIL_ADDRESS relationships. The attributes of these relationships are 
+described below.
+
+DIRECTLY_REPORTED_TO Relationship
+---------------------------------
+startTime       - [String] Datetime for the beginning of the interval over which the 
+                  relationship is known to exist.
+endTime         - [String] Datetime for the end of the interval over which the relationship
+                  is known to exist.
+evidenceType    - [String] "Interval". If the evidence were derived from an email, for example,
+                  the evidence type would often be point evidence since most messages do not
+                  provide evidence of the extent of the relationship.
+provenance      - [String] The source containing evidence of the relationship's existence.
+type            - [String] "Social Relationship"
+
+USED_EMAIL_ADDRESS Relationship
+-------------------------------
+No attributes
+
+Dataset Version History
+=======================
+
+Version 0.1     - Initial release.
+
+Contact Information
+===================
+Questions, comments and suggestions are most welcome.
+Contact Chris Diehl at diehl@alumni.cmu.edu. 
+
+References
+==========
+
+[1] http://www.isi.edu/~adibi/Enron/Enron.htm
+[2] http://bailando.sims.berkeley.edu/enron_email.html
+[3] <insert GitHub link>
+[4] C. P. Diehl, G. Namata, L. Getoor, "Relationship Identification for Social Network 
+    Discovery," AAAI 2007
