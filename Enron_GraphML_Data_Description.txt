@@ -107,6 +107,6 @@ References
 
 [1] http://www.isi.edu/~adibi/Enron/Enron.htm
 [2] http://bailando.sims.berkeley.edu/enron_email.html
-[3] <insert GitHub link>
+[3] https://github.com/diehl/Enron-GraphML-Data-Documentation/blob/master/EnronManagerSubordinateRelationships.pdf
 [4] C. P. Diehl, G. Namata, L. Getoor, "Relationship Identification for Social Network 
     Discovery," AAAI 2007
