@@ -78,9 +78,9 @@ described below.
 
 DIRECTLY_REPORTED_TO Relationship
 ---------------------------------
-startTime       - [String] Datetime for the beginning of the interval over which the 
+startDatetime   - [String] Datetime for the beginning of the interval over which the 
                   relationship is known to exist.
-endTime         - [String] Datetime for the end of the interval over which the relationship
+endDatetime     - [String] Datetime for the end of the interval over which the relationship
                   is known to exist.
 evidenceType    - [String] "Interval". If the evidence were derived from an email, for example,
                   the evidence type would often be point evidence since most messages do not
