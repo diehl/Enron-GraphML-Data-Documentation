@@ -92,6 +92,9 @@ USED_EMAIL_ADDRESS Relationship
 -------------------------------
 No attributes
 
+Images depicting the entity-relationship diagram and the attributes associated with nodes and 
+relationships are available [5].
+
 Dataset Version History
 =======================
 
@@ -110,3 +113,4 @@ References
 [3] https://github.com/diehl/Enron-GraphML-Data-Documentation/blob/master/EnronManagerSubordinateRelationships.pdf
 [4] C. P. Diehl, G. Namata, L. Getoor, "Relationship Identification for Social Network 
     Discovery," AAAI 2007
+[5] https://github.com/diehl/Enron-GraphML-Data-Documentation
