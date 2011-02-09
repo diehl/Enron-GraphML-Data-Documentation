@@ -98,6 +98,7 @@ relationships are available [5].
 Dataset Version History
 =======================
 
+Version 0.11    - Removed duplicate Person nodes. 
 Version 0.1     - Initial release.
 
 Contact Information
